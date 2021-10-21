@@ -1,0 +1,1 @@
+Get-EventLog -LogName Security -InstanceId 4634  -newest 25| Export-Csv C:\cevent\cr4634.csv
