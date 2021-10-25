@@ -25,14 +25,14 @@ command: $  nano inventory
 * Update the inventory file with 'Server ip address''Port number ' etc
  ```sh
 [browserless]
-172.16.XXX.XXX                                               (Enter Your Private ip address)
+172.16.XXX.XXX                                               #(Enter Your Private ip address)
 [browserless:vars]
-ansible_user=ubuntu                                          (a user in server)
-ansible_port=5190                                            (port number of ssh)
-browserless_dir=/opt/browserless                             (Installation directory of browserless)
-browserless_user=browserless                                (Username of browserless)
-browserless_group=browserless                                (Browserless groupname)
-max_concurrent_sessions=50                                  (The number of concurrent sessions)
+ansible_user=ubuntu                                          #(a user in server)
+ansible_port=5190                                            #(port number of ssh)
+browserless_dir=/opt/browserless                             #(Installation directory of browserless)
+browserless_user=browserless                                
+browserless_group=browserless                                
+max_concurrent_sessions=50                                 # (The number of concurrent sessions)
 ```
 
 
@@ -52,22 +52,22 @@ ansible-playbook -i inventory playbook.yml
 Syntax
 ```sh
 [browserless]
-XXX.XXX.XXX.XXX              Your ip address
+XXX.XXX.XXX.XXX              #Your ip address
 [browserless:vars]
-ansible_user=               username
-ansible_port=               Port number
-browserless_dir=             Installation directory of browserless
-browserless_user=           Username of browserless
-browserless_group=          Browserless groupname
-max_concurrent_sessions=    The number of concurrent sessions as a percentage of maximum concurrent sessions.
+ansible_user=               #username
+ansible_port=               #Port number
+browserless_dir=             #Installation directory of browserless
+browserless_user=          
+browserless_group=          
+max_concurrent_sessions=    #The number of concurrent sessions as a percentage of maximum concurrent sessions.
 ```
 Example file
 ```sh
 [browserless]
-172.16.xx.xx (Private ip address of server)
+172.16.xx.xx #(Private ip address of server)
 [browserless:vars]
-ansible_user=ubuntu (a user in server)
-ansible_port=5100 (port number of ssh)
+ansible_user=ubuntu #(a user in server)
+ansible_port=5100 #(port number of ssh)
 browserless_dir=/opt/browserless
 browserless_user=browserless
 browserless_group=browserless
@@ -89,8 +89,8 @@ Environment=ENABLE_CORS=true
 Environment=DEBUG=browserless*
 Environment=FUNCTION_BUILT_INS='["*"]'
 Environment=FUNCTION_EXTERNALS=true
-Environment=HOST={{ ansible_ens4.ipv4.address }}                    (Ip Address of Host Machine)
-Environment=PORT=3000                                               (Browserless service running port)
+Environment=HOST={{ ansible_ens4.ipv4.address }}                    #(Ip Address of Host Machine)
+Environment=PORT=3000                                               #(Browserless service running port)
 Environment=PREBOOT_CHROME=false
 Environment=MAX_QUEUE_LENGTH=100
 Environment=CONNECTION_TIMEOUT=900000
@@ -99,9 +99,9 @@ Environment=MAX_CONCURRENT_SESSIONS={{ max_concurrent_sessions }}
 Environment=KEEP_ALIVE=true
 Environment=CHROME_REFRESH_TIME=sixtyMinutes
 Type=simple
-User={{ browserless_user }}                                          (Browserless username)
-Group={{ browserless_group }}                                        (Browserless Group Name)
-WorkingDirectory={{ browserless_dir }}                              (Browserless Directory)
+User={{ browserless_user }}                                          
+Group={{ browserless_group }}                                        
+WorkingDirectory={{ browserless_dir }}                              #(Browserless Directory)
 ExecStart=/usr/bin/node  --max-old-space-size=4086  {{ browserless_dir }}/build/index.js (Executional javascript file)
 ExecStop=
 [Install]
